@@ -1,4 +1,5 @@
 import "../style/home.css";
+
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -15,6 +16,19 @@ export default function Home() {
   const handleHistory = () => {
     navigate("/history");
   };
+  
+  const handleStartTest = () => {
+    // เช็คสถานะล็อกอินจาก localStorage
+    const isLoggedIn = localStorage.getItem("user");
+    if (isLoggedIn) {
+      // ถ้าล็อกอินแล้ว ไปหน้า history
+      navigate("/history");
+    } else {
+      // ถ้ายังไม่ได้ล็อกอิน ไปหน้า signin
+      navigate("/signin");
+    }
+  };
+
 
   return (
     <>
@@ -73,13 +87,13 @@ export default function Home() {
       >
         {/* Content */}
         <div className="flex flex-col md:flex-row items-center md:items-start mt-8 md:mt-0">
-          <div className="md:mr-20">
+          {/* <div className="md:mr-20">
             <img
               className="rounded-full size-96 md:size-96"
               src="https://www.nsm.or.th/nsm/sites/default/files/2021-12/20200204-2PNG.png"
               alt="Your image"
             />
-          </div>
+          </div> */}
           <div className="font-['Arial'] font-bold text-left md:text-left mt-9">
             <h1 className="text-lg">Capture. Analyze. Know your</h1>
             <h1 className="text-4xl mt-2">water</h1>
@@ -97,4 +111,3 @@ export default function Home() {
   );
 }
 
-// mkjn

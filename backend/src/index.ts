@@ -5,7 +5,9 @@ import helmet from "helmet";
 import { dbClient } from "@db/client";
 import { stripsTable, usersTable } from "@db/schema";
 import { eq } from "drizzle-orm";
+import multer from "multer";
 
+const upload = multer({ dest: "uploads/" }); // เก็บไฟล์ในโฟลเดอร์ uploads
 // Initialize the express app
 const app = express();
 
@@ -210,3 +212,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
